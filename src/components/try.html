@@ -1,4 +1,4 @@
-<div class="main-wrap" data-scroll-container><header class="section home-header theme-dark" data-scroll-section>
+<header class="section home-header theme-dark" data-scroll-section>
 
    <div class="overlay personal-image no-select once-in" data-scroll data-scroll-speed="-3" data-scroll-position="top">
       <img src="/img/wissem.png"/>
@@ -34,17 +34,6 @@
       </div>
    </div>
 
-
-   <div class="nav-bar">
-        <div class="credits-top">
-            <div class="btn btn-link btn-left-top">
-                <a href="/index.html" class="btn-click magnetic" data-strength="20" data-strength-text="10">
-                <span class="btn-text">
-                    <div class="credit"><span>©</span></div><div class="cbd"><span class="code-by">Code by </span><span class="dennis"><span class="wissem">Wissem</span> <span class="sahli">Sahli</span></span></span></div>
-                </span>
-                </a>
-        </div>
-    </div>
 
 </div>   
     <div class="container once-in once-in-secondary">
@@ -334,3 +323,563 @@
    }
    
 }
+
+
+
+
+function initScrollLetters() {
+  // Scrolling Letters Both Direction
+  // https://codepen.io/GreenSock/pen/rNjvgjo
+  // Fixed example with resizing
+  // https://codepen.io/GreenSock/pen/QWqoKBv?editors=0010
+
+  let direction = 1; // 1 = forward, -1 = backward scroll
+
+  const roll1 = roll(".big-name .name-wrap", {duration: 18}),
+        roll2 = roll(".rollingText02", {duration: 10}, true),
+        scroll = ScrollTrigger.create({
+          trigger: document.querySelector('[data-scroll-container]'),
+          onUpdate(self) {
+            if (self.direction !== direction) {
+              direction *= -1;
+              gsap.to([roll1, roll2], {timeScale: direction, overwrite: true});
+            }
+          }
+        });
+
+  // helper function that clones the targets, places them next to the original, then animates the xPercent in a loop to make it appear to roll across the screen in a seamless loop.
+  function roll(targets, vars, reverse) {
+    vars = vars || {};
+    vars.ease || (vars.ease = "none");
+    const tl = gsap.timeline({
+            repeat: -1,
+            onReverseComplete() { 
+              this.totalTime(this.rawTime() + this.duration() * 10); // otherwise when the playhead gets back to the beginning, it'd stop. So push the playhead forward 10 iterations (it could be any number)
+            }
+          }), 
+          elements = gsap.utils.toArray(targets),
+          clones = elements.map(el => {
+            let clone = el.cloneNode(true);
+            el.parentNode.appendChild(clone);
+            return clone;
+          }),
+          positionClones = () => elements.forEach((el, i) => gsap.set(clones[i], {position: "absolute", overwrite: false, top: el.offsetTop, left: el.offsetLeft + (reverse ? -el.offsetWidth : el.offsetWidth)}));
+    positionClones();
+    elements.forEach((el, i) => tl.to([el, clones[i]], {xPercent: reverse ? 100 : -100, ...vars}, 0));
+    window.addEventListener("resize", () => {
+      let time = tl.totalTime(); // record the current time
+      tl.totalTime(0); // rewind and clear out the timeline
+      positionClones(); // reposition
+      tl.totalTime(time); // jump back to the proper time
+    });
+    return tl;
+  }
+
+}
+
+
+
+      if(document.querySelector(".digital-ball .globe")) {
+      // Scrolltrigger Animation : Globe
+      $("main").each(function (index) {
+        let triggerElement = $(this);
+        let targetElement = $(".digital-ball .globe");
+      
+        let tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: triggerElement,
+            start: "100% 100%",
+            end: "100% 0%",
+            scrub: 0,
+          }
+        });
+        
+        tl.to(targetElement, {
+          ease: "none",
+          rotate: 90
+        });
+      });
+      }
+
+
+      
+.line-globe {
+   overflow: visible;
+   z-index: 5;
+}
+
+@keyframes digitalball {
+   0%   {background: var(--color-blue);}
+   50%   {background: #ff4444;}
+   100% {background: var(--color-blue);}
+}
+
+.digital-ball {
+   width: clamp(9em, 12vw, 11em);
+   height: clamp(9em, 12vw, 11em);
+   background: var(--color-dark);
+   border-radius: 50%;
+   top: 0;
+   right: 0;
+   transform: translate(-50%, -50%);
+   position: absolute;
+   overflow: hidden;
+   background: var(--color-blue);
+}
+
+.digital-ball .overlay {
+   opacity: 0;
+   transition: opacity 1s ease-in-out;
+   animation: digitalball 6s ease-in-out infinite;
+}
+
+.line-globe .digital-ball:hover .overlay {
+   opacity: 1;
+}
+
+@keyframes globeBounce {
+   0%   {transform: translate(-50%, -40%);}
+   50%  {transform: translate(-50%, -60%);}
+   100% {transform: translate(-50%, -40%);}
+}
+
+.globe {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: 3em;
+   height: 3em;
+   transform: translate(-50%, -50%);
+   border-radius: 50%;
+   overflow: hidden;
+   will-change: transform;
+}
+
+@keyframes globe {
+   0%   {transform: translate(-50%, -50%) rotate(15deg); }
+   50%   {transform: translate(-50%, -50%) rotate(-15deg);}
+   100% {transform: translate(-50%, -50%) rotate(15deg);}
+}
+
+.globe-wrap {
+   top: 50%;
+   left: 50%;
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   display: block;
+   border-radius: 50%;
+   transform: translate(-50%, -50%) rotate(30deg);
+   animation: globe 5.4s cubic-bezier(0.35, 0, 0.65, 1) infinite;
+   overflow: hidden;
+   box-shadow: inset 0px 0px 0px .125em var(--color-white);
+}
+
+.globe .circle {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: 100%;
+   height: 100%;
+   transform: translate(-50%, -50%);
+   border-radius: 50%;
+   box-shadow: inset .1em 0px 0px .08em var(--color-white);
+   animation: circle1 2.7s linear infinite;
+   font-size: .75em;
+}
+
+@keyframes circle1 {
+   0%   {border-radius: 50%; box-shadow: inset .1em 0px 0px .08em var(--color-white); width: 100%; }
+   49%  {border-radius: 50%; box-shadow: inset .1em 0px 0px .08em var(--color-white); background: transparent;}
+   50%  {border-radius: 0%; width: .175em; background: var(--color-white);}
+   51%  {border-radius: 50%; box-shadow: inset -.1em 0px 0px .08em var(--color-white); background: transparent;}
+   100% {border-radius: 50%; box-shadow: inset -.1em 0px 0px .08em var(--color-white); width: 100%;}
+}
+
+.globe :nth-child(1) {
+   animation-delay: -1.8s;
+}
+
+.globe :nth-child(2) {
+   animation-delay: -.9s;
+}
+
+
+.globe .circle-hor {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: 150%;
+   transform: translate(-50%, -50%);
+   border-radius: 50%;
+   height: 55%;
+   box-shadow: inset 0px 0px 0px .15em var(--color-white);
+   font-size: .75em;
+}
+
+.globe .circle-hor-middle {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: 150%;
+   transform: translate(-50%, -50%);
+   border-radius: 0%;
+   height: .15em;
+   background: var(--color-white);
+   font-size: .75em;
+}
+
+@media screen and (max-width: 1000px) {
+
+   .digital-ball {
+      transform: translate(-20%, -50%);
+   }
+
+}:root {
+
+    --color-dark: #1C1D20;
+    --color-dark-dark: #141517;
+    --color-light: #FFFFFF;
+    --color-blue: #3c0909;
+    --color-blue-dark: #3c0909;
+    --color-gray: #999D9E;
+    --color-lightgray: #E9EAEB;
+    --color-white: #FFFFFF;
+    
+    --color-border: rgba(28, 29, 32, 0.175);
+    --color-border-solid: #D2D2D2;
+    --color-border-light: rgba(255, 255, 255, 0.2);
+    --color-border-solid-light: #545557;
+
+    --color-text: #1C1D20;
+    --color-text-light: #FFF;
+
+    --alert-error: #ff4444;
+    --alert-success: #24C958;
+
+    --animation-primary: all .5s cubic-bezier(.7, 0, .3, 1);
+    --animation-fast: all .3s cubic-bezier(.7, 0, .3, 1);
+    --animation-smooth: all .7s cubic-bezier(.7, 0, .3, 1);
+    --animation-slow: all .9s cubic-bezier(.7, 0, .3, 1);
+
+    --section-padding: clamp(5em, 21vh, 12em);
+    --container-padding: clamp(2.5em, 8vw, 8em);
+    --gap-padding: clamp(1.5em, 4vw, 2.5em);
+  
+}@media screen and (max-width: 1200px){
+    :root { 
+        --container-padding: 6vw;
+    }
+}
+
+@media screen and (max-width: 720px){
+    :root { 
+        --section-padding: 12vh;
+    }
+}
+
+@media screen and (max-width: 540px){
+
+    :root { 
+        --color-border: rgba(28, 29, 32, 0.225);
+        --color-border-light: rgba(255, 255, 255, 0.225);
+        --container-padding: clamp(1.25em, 4vw, 2.5em);
+        --section-padding: max(2.5em, 12vh);
+    }
+}
+
+
+.arrow {
+   position: relative;
+   width: clamp(.9em, 1.1vw, 1.1em);
+}
+
+.arrow.big {
+   position: relative;
+   width: clamp(1.1em, 1.3vw, 1.25em);
+}
+
+.arrow svg {
+   display: block;
+   width: 100%;
+}
+
+
+.section {
+    display: block;
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    position: relative;
+}
+
+.section-wrap {
+    display: block;
+    padding-top: 0;
+    padding-bottom: 0;
+    position: relative;
+}
+
+.section.full-height {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.section.no-padding {
+    padding-top: unset;
+    padding-bottom: unset;
+}
+
+.container {
+    margin: 0 auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    max-width: 100em;
+}
+
+.container.large {
+    padding-left: var(--gap-padding);
+    padding-right: var(--gap-padding);
+} 
+
+.container.medium {
+    padding-left: calc(var(--container-padding) * 2);
+    padding-right: calc(var(--container-padding) * 2);
+} 
+
+.container.small {
+    padding-left: calc(var(--container-padding) * 3);
+    padding-right: calc(var(--container-padding) * 3);
+} 
+
+.container.no-padding {
+    padding-left: unset;
+    padding-right: unset;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.row.no-flex {
+    display: block;
+}
+
+.row.no-wrap {
+    flex-wrap: nowrap;
+}
+
+.flex-col {
+    display: block;
+    width: 100%;
+    order: 2;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+img.overlay,
+video.overlay {
+    object-fit: cover;
+}
+
+.line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-border);
+    margin-top: var(--gap-padding);
+    margin-bottom: var(--gap-padding);
+}
+
+.stripe {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-border);
+}
+
+.theme-dark .stripe {
+    background-color: var(--color-border-light);
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media screen and (max-width: 540px){
+
+    .section.full-height {
+        min-height: 100vh;
+        min-height: calc(var(--vh, 1vh) * 100);
+        max-height: 100vh;
+    }
+
+    .container.medium,
+    .container.small {
+        padding-left: var(--container-padding);
+        padding-right: var(--container-padding);
+    } 
+}
+
+
+
+
+
+
+
+<section class="section home-intro" data-scroll-section>
+   <div class="container medium">
+      <div class="row">
+         <div class="flex-col">
+            <h4 class="span-lines animate">Bridging the worlds of AI, Data, Development, and finance. Creating smart, human-centered digital solutions that stand out.</h4>
+         </div>
+         <div class="flex-col">
+            <div class="text-wrap fade-in animate">
+               <p>Engineering clarity in a world of data.
+                Driven by curiosity, defined by precision.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+.home-intro {
+   padding-bottom: calc(var(--section-padding) * .66);
+}
+
+.home-intro .flex-col:nth-child(1) {
+   width: 70%;
+   padding-right: var(--gap-padding);
+}
+
+.home-intro .flex-col:nth-child(2) {
+   width: 30%;
+   padding-left: var(--gap-padding);
+}
+
+.home-intro .flex-col:nth-child(2) .btn {
+   position: absolute;
+   top: 80%;
+}
+
+.home-intro .flex-col:nth-child(2) p {
+   margin-bottom: 6em;
+   padding-top: .5em;
+   max-width: 14em;
+}
+
+@media screen and (max-width: 720px){
+
+   .home-intro {
+      padding-bottom: calc(var(--section-padding) * 1);
+   }
+
+   .home-intro .flex-col:nth-child(1) {
+      width: 100%;
+      padding-right: 0;
+   }
+   
+   .home-intro .flex-col:nth-child(2) {
+      width: 100%;
+      padding-left: 0;
+      max-width: 100%;
+      padding: calc(var(--section-padding) / 2) 0 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+   }
+
+   .home-intro .flex-col:nth-child(2) .text-wrap {
+      width: 100%;
+   }
+
+   .home-intro .flex-col:nth-child(2) p {
+      margin-bottom: calc(var(--section-padding) * .66);
+      padding-top: 0;
+   }
+
+   .home-intro .flex-col:nth-child(2) .btn {
+      position: absolute;
+      top: unset;
+      bottom: 0;
+      right: 0;
+      transform: translate(-20%, 50%);
+   }
+}
+
+.span-lines.animate .span-line {
+   position: relative;
+   display: inline-flex;
+   overflow: hidden;
+}
+
+.span-lines.animate .span-line .span-line-inner {
+   position: relative;
+   display: block;
+}
+
+
+  if(document.querySelector(".span-lines.animate")) {
+  $(".span-lines.animate").each(function (index) {
+    let triggerElement = $(this);
+    let targetElement = $(".span-lines.animate .span-line-inner");
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        toggleActions:'play none none reset', 
+        start: "0% 100%",
+        end: "100% 0%"
+      }
+    });
+    if(targetElement) {
+      tl.from(targetElement, {
+        y: "100%",
+        stagger: .01,
+        ease: "power3.out",
+        duration: 1,
+        delay: 0
+      });
+    }
+  });
+  }
+
+  if(document.querySelector(".fade-in.animate")) {
+  // Scrolltrigger Animation : Fade in
+  $(".fade-in.animate").each(function (index) {
+    let triggerElement = $(this);
+    let targetElement = $(this);
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        toggleActions:'play none none reset',
+        start: "0% 110%",
+        end: "100% 0%",
+      }
+    });
+    if(targetElement) {
+      tl.from(targetElement, {
+        y: "2em",
+        opacity: 0,
+        ease: "expo.out",
+        duration: 1.75,
+        delay: 0
+      });
+    }
+  });
+  }

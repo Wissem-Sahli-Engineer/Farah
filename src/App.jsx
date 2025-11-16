@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import './App.css'
-import MaskEntry from './components/Mask-Entry.jsx'
-import Navigation from './components/Nav.jsx'
-import LoadingScreen from './components/Loading.jsx'
+
+import Navigation from './Pages/Nav.jsx'
+import HeroSection from './Pages/Hero.jsx'
+import AboutHero from './Pages/About.-hero.jsx'
+import Gallery from './Pages/Gallery1.jsx'
+import Home from './Pages/Pixel-img.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,9 +13,14 @@ function App() {
   return (
     <>
 
-      <LoadingScreen />
+      <Navigation />
+      <HeroSection />
+      <AboutHero />
+      <Gallery />
+      <Home />
 
-      <div style={{height : '100vh'}}></div>
+      <div style={{height:'100vh'}}></div>
+
     </>
   )
 }
