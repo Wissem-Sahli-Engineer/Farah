@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 
 // Animation variants
@@ -46,12 +47,15 @@ const translate = {
 // Navigation links data
 const links = [
   { title: "Home", href: "/", src: "./img/Farah1.jpg" },
+  { title: "Gallery", href: "/gallery", src: "./img/Farah7.jpg" },
   { title: "About ME", href: "/about", src: "./img/Farah7.jpg" },
   { title: "Contact", href: "/contact", src: "./img/Farah11.jpg" },
 ];
 
 // Body Component
 function Body({ links, selectedLink, setSelectedLink, onClose }) {
+  const navigate = useNavigate();
+
   const getChars = (word) => {
     let chars = [];
     word.split("").forEach((char, i) => {
@@ -73,27 +77,17 @@ function Body({ links, selectedLink, setSelectedLink, onClose }) {
 
   const handleClick = (e, href) => {
     e.preventDefault();
-    try {
-      const url = new URL(href, window.location.origin);
-      const targetPath = url.pathname;
-
-      // Close nav immediately
-      if (typeof onClose === 'function') onClose();
-
-      // If target path is the same as current page -> smooth scroll
-      if (targetPath === window.location.pathname) {
-        // update history (optional) and smooth scroll to top
-        try { window.history.pushState({}, '', href); } catch (err) {}
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        // Different page -> full navigation
-        window.location.href = href;
-      }
-    } catch (err) {
-      // fallback: close and navigate
-      if (typeof onClose === 'function') onClose();
-      window.location.href = href;
+    if (typeof onClose === 'function') onClose();
+    // Special handling: map some routes to scroll targets on the home page
+    if (href === '/contact') {
+      navigate('/', { state: { target: 'contact' } });
+      return;
     }
+    if (href === '/about') {
+      navigate('/', { state: { target: 'about' } });
+      return;
+    }
+    navigate(href);
   };
 
   return (
@@ -133,7 +127,7 @@ function Footer() {
       </ul>
       <ul>
         <motion.li custom={[0.3, 0]} variants={translate} initial="initial" animate="enter" exit="exit">
-          <span>Images:</span> ChatGPT-Sora
+          <span>Images:</span> Farah Laridhi
         </motion.li>
       </ul>
       <ul>
@@ -176,9 +170,14 @@ function Nav({ onClose }) {
 
 // Main Navigation Component
 function Navigation() {
+  const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
-  // Fall back to no-router behavior: use window.location and a default empty cart
   const items = [];
+
+  const handleGalleryClick = () => {
+    setIsActive(false);
+    navigate('/gallery');
+  };
 
 
 
@@ -192,7 +191,7 @@ function Navigation() {
 
         <div className="credits-top">
           <div className="btn btn-link btn-left-top">
-            <a href="/index.html" className="btn-click magnetic" data-strength="20" data-strength-text="10">
+            <a href="/" className="btn-click magnetic" data-strength="20" data-strength-text="10">
               <span className="btn-text">
                 <span className="credit"><span>©</span></span>
                 <span className="cbd">
@@ -213,20 +212,12 @@ function Navigation() {
         </div>
         <motion.div variants={opacity} animate={!isActive ? "open" : "closed"} className="nav-shop">
           <p
+            style={{paddingRight:'10px'}}
             className="shop-text"
             role="button"
             tabIndex={0}
-            onClick={() => {
-              // close nav then navigate to menu (no Router fallback)
-              setIsActive(false);
-              if (window.location.pathname === '/menu') {
-                try { window.history.pushState({}, '', '/menu'); } catch (err) {}
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              } else {
-                window.location.href = '/menu';
-              }
-            }}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.currentTarget.click(); } }}
+            onClick={handleGalleryClick}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleGalleryClick(); } }}
           >Gallery</p>
         </motion.div>
       </div>

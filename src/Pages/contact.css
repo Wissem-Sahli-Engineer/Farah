@@ -1,0 +1,275 @@
+.farah-contact {
+  min-height: 100vh;
+}
+
+.contact-hero {
+  text-align: center;
+  padding: 30px 20px 30px;
+}
+
+.contact-subtitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.title-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  opacity: 0;
+  animation: fadeInUp 1s ease 0.2s forwards;
+}
+
+.decoration-line {
+  width: 80px;
+  height: 1px;
+  background: white;
+}
+
+.contact-title {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+.contact-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.contact-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  padding: 15px 0;
+  font-size: 1rem;
+  color: gray;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.contact-form input.error,
+.contact-form textarea.error {
+  border-bottom-color: #e74c3c;
+  box-shadow: 0 2px 0 0 rgba(231, 76, 60, 0.1);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: gray;
+  font-size: 0.95rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-bottom-color: white;
+  border-bottom-width: 2px;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+.required-note {
+  text-align: center;
+  color: gray;
+  font-size: 12px;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* === Custom styles for WhatsApp & Email buttons === */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+/* Both buttons use the same base style as .submit-btn */
+.whatsapp-btn,
+.email-btn,
+.instagram-btn {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 15px 40px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+
+/* WhatsApp hover effect — slightly deeper green tone */
+.whatsapp-btn:hover:not(:disabled) {
+  background: black; /* darker variation of #7a9b76 */
+  color: #f5f5dc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(107, 143, 103, 0.3);
+}
+
+.instagram-btn:hover,
+.email-btn:hover:not(:disabled) {
+  background: black;
+  color: #f5f5dc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(122, 155, 118, 0.3);
+}
+
+/* Disabled state for both buttons */
+.whatsapp-btn:disabled,
+.email-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.whatsapp-btn:disabled:hover,
+.email-btn:disabled:hover {
+  background: transparent;
+  color: white;
+  box-shadow: none;
+  transform: none !important;
+}
+
+.button-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-info-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+}
+
+.info-title {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.info-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-details p {
+  font-size: 1rem;
+  color: gray;
+  line-height: 1.6;
+}
+
+.info-phone,
+.info-email {
+  color: white;
+  font-weight: 500;
+}
+
+.contact-map {
+  width: 100%;
+  margin-top: 60px;
+  filter: grayscale(30%) sepia(10%);
+  transition: filter 0.4s ease;
+}
+
+.contact-map:hover {
+  filter: grayscale(0%) sepia(0%);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive layout — side by side on desktop */
+@media (min-width: 768px) {
+  .button-group {
+    flex-direction: row;
+  }
+
+  .whatsapp-btn,
+  .email-btn {
+    align-self: center;
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .decoration-line {
+    width: 40px;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-info-section {
+    padding-left: 0;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .whatsapp-btn,
+  .email-btn {
+    width: 100%;
+    align-self: stretch;
+  }
+}

@@ -883,3 +883,212 @@ video.overlay {
     }
   });
   }
+
+
+<section class="section about-image once-in" data-scroll-section>
+   <div class="bottom-lightgray"></div>
+   <div class="container">
+      <div class="row">
+         <div class="flex-col">
+            <div class="arrow"><?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>arrow-up-right</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-1019.000000, -279.000000)" stroke="#FFFFFF" stroke-width="1.5">
+            <g id="arrow-up-right" transform="translate(1026.000000, 286.000000) rotate(90.000000) translate(-1026.000000, -286.000000) translate(1020.000000, 280.000000)">
+                <polyline id="Path" points="2.76923077 0 12 0 12 9.23076923"></polyline>
+                <line x1="12" y1="0" x2="0" y2="12" id="Path"></line>
+            </g>
+        </g>
+    </g>
+</svg></div>
+            <p data-scroll data-scroll-speed="-1" data-scroll-position="top" data-scroll-offset="0%, -50%">I help people from all over the world with tailor-made solutions. With each project, I push my work to new horizons, always putting quality first.</p>
+            <p data-scroll data-scroll-speed="-1" data-scroll-position="top" data-scroll-offset="0%, -50%"><span style="opacity: .5; display: block; padding-top: .5em;">Always exploring<span class="animate-dot">.</span><span class="animate-dot">.</span><span class="animate-dot">.</span></span></p>
+         </div>
+         <div class="flex-col">
+            <div class="single-about-image">
+               <div class="overlay overlay-image" data-scroll data-scroll-speed="-2" data-scroll-position="top"></div>
+               <div class="overlay"></div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+
+   if(document.querySelector(".about-image .single-about-image")) {
+      // Scrolltrigger Animation : About 
+      $(".about-image .single-about-image").each(function (index) {
+        let triggerElement = $(this);
+        let targetElement = $(".about-image .arrow");
+      
+        let tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: triggerElement,
+            start: "15% 100%",
+            end: "100% 0%",
+            scrub: 0,
+          }
+        });
+        tl.to(targetElement, {
+          rotate: 60,
+          ease: "none"
+        }, 0);
+      });
+      }
+
+      
+.about-image {
+   padding-top: calc(var(--section-padding) * .75);
+   padding-bottom: 0;
+   background: var(--color-white);
+}
+
+.about-image .bottom-lightgray {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   height: var(--section-padding);
+   left: 0;
+   background: var(--color-lightgray);
+   height: 10vw;
+   display: none;
+}
+
+.about-image .flex-col:nth-child(1) {
+   width: 35%;
+   padding-left: var(--container-padding);
+   padding-right: calc(var(--container-padding) / 2);
+}
+
+.about-image .flex-col:nth-child(1) p {
+   margin-top: -.33em;
+   display: block;
+   will-change: transform;
+}
+
+.about-image .flex-col:nth-child(1) .arrow {
+   position: absolute;
+   left: 0;
+   transform: rotate(-45deg);
+   will-change: transform;
+}
+
+.about-image .flex-col:nth-child(1) .arrow svg g{
+   stroke: var(--color-dark);
+}
+
+.about-image .flex-col:nth-child(2) {
+   width: 65%;
+}
+
+.single-about-image {
+   width: 100%;
+   display: block;
+   background: var(--color-lightgray);
+   overflow: hidden;
+   position: relative;
+}
+
+.single-about-image::before{
+   content: "";
+   display: block;
+   padding-top: 135%;
+}
+
+.single-about-image .overlay:nth-child(1) {
+   background: url("/img/image1.jpeg") center center no-repeat;
+   background-size: cover;
+   top: -20vh;
+   height: 105%;
+}
+
+.single-about-image .overlay:nth-child(2) {
+   background: url("/img/extra.JPG") center center no-repeat;
+   display: none;
+}
+
+@media screen and (max-width: 840px) {
+   .about-image .flex-col:nth-child(1) {
+      width: 45%;
+      padding-right: calc(var(--container-padding) / 1);
+   }
+   
+   .about-image .flex-col:nth-child(2) {
+      width: 55%;
+   }
+
+   .single-about-image::before{
+      padding-top: 125%;
+   }
+}
+
+@media screen and (max-width: 840px) {
+
+   .about-image {
+      padding-top: calc(var(--section-padding) * .85);
+   }
+
+   .about-image .flex-col:nth-child(1) {
+      width: unset;
+      padding: 0;
+      margin-left: calc(var(--container-padding) / 1);
+      padding-right: calc(var(--container-padding) / 1);
+      padding-top: calc(var(--section-padding) / 4);
+      width: 100%;
+   }
+
+   .about-image .flex-col:nth-child(1) p {
+      max-width: 100%;
+   }
+   
+   .about-image .flex-col:nth-child(2) {
+      padding-top: calc(var(--section-padding) / 1.15);
+      width: 100%;
+   }
+
+   .about-image .flex-col:nth-child(1) .arrow {
+      top: calc(var(--section-padding) / -4);
+      transform: rotate(0deg) translateY(-50%);
+   }
+
+   .about-image .bottom-lightgray {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: var(--section-padding);
+      left: 0;
+      background: var(--color-lightgray);
+      height: 60vw;
+      display: block;
+   }
+}
+
+@media screen and (max-width: 540px) {
+
+   .single-about-image::before {
+      padding-top: 125%;
+      padding-top: 140%;
+   }
+
+   .single-about-image .overlay:nth-child(1) {
+      width: 130%;
+      left: -30%;
+
+      width: 100%;
+      left: 0;
+      top: -18%;
+      height: 120%;
+   }
+
+   .about-image .flex-col:nth-child(1) {
+      margin-left: 0;
+      padding-right: 0;
+   }
+
+   .about-image .flex-col:nth-child(2) {
+      padding-top: calc(var(--section-padding) * .5);
+   }
+
+}
+

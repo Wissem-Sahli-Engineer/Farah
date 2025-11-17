@@ -37,8 +37,8 @@ const useInView = ({ threshold = 0.5, triggerOnce = false } = {}) => {
 export default function PixelImage() {
   const images = [
     {
-      high: './img/Farah11.jpg',
-      low: './img/Farah11.jpg'
+      high: './img/Farah13.jpg',
+      low: './img/Farah13.jpg'
     },
     {
       high: './img/Farah10.jpg',
@@ -123,6 +123,11 @@ export default function PixelImage() {
           display: flex;
           align-items: center;
           justify-content: center;
+          padding: 2rem;  
+          margin-top: 5rem;
+          gap: 2rem;
+          flex-wrap: wrap;
+          margin-bottom: 2rem;
         }
 
         .picture {
@@ -130,9 +135,9 @@ export default function PixelImage() {
         }
 
         .picture img {
-          width: 1000px;
+          width: 400px;
           image-rendering: pixelated;
-          height: 120vh;
+          height: 90vh;
         }
 
         .picture canvas {
@@ -140,12 +145,6 @@ export default function PixelImage() {
           left: 0;
           top: 0;
           z-index: 1;
-        }
-
-        @media (max-width: 1020px) {
-          .picture img {
-            width: 100%;
-          }
         }
       `}</style>
       <div className="pixel-image-container">
