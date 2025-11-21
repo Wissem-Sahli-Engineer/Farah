@@ -269,7 +269,7 @@ const DeviceBlock = () => {
                   <video 
                     ref={videoRef}
                     className="overlay" 
-                    src="https://dennissnellenberg.com/media/pages/work/twice/2a06f31598-1710406342/screen-rec-home-2.mov" 
+                    src="./src/assets/FarahWalk.MP4" 
                     loop 
                     muted 
                     playsInline

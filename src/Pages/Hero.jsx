@@ -83,7 +83,7 @@ const HeroSection = () => {
   return (
     <header className="section home-header theme-dark" data-scroll-section>
       <div className="overlay personal-image no-select once-in" data-scroll data-scroll-speed="-3" data-scroll-position="top">
-        <img src="./img/farah_hero.jpg" alt="" />
+        <img src="./img/Farah5.jpg" alt="" />
       </div>
 
       <div className="overlay get-height once-in once-in-secondary">
@@ -123,7 +123,7 @@ const HeroSection = () => {
               <div className="arrow big">
                 <svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg">
                   <title>arrow-up-right</title>
-                  <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                  <g id="Page-1" stroke="black" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g id="Artboard" transform="translate(-1019.000000, -279.000000)" stroke="#FFFFFF" strokeWidth="1.5">
                       <g id="arrow-up-right" transform="translate(1026.000000, 286.000000) rotate(90.000000) translate(-1026.000000, -286.000000) translate(1020.000000, 280.000000)">
                         <polyline id="Path" points="2.76923077 0 12 0 12 9.23076923"></polyline>

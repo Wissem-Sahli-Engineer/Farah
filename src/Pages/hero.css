@@ -413,7 +413,7 @@
    transform: translate(-50%, -50%) rotate(30deg);
    animation: globe 5.4s cubic-bezier(0.35, 0, 0.65, 1) infinite;
    overflow: hidden;
-   box-shadow: inset 0px 0px 0px .125em var(--color-white);
+   box-shadow: inset 0px 0px 0px .125em black;
 }
 
 .globe .circle {
@@ -424,17 +424,17 @@
    height: 100%;
    transform: translate(-50%, -50%);
    border-radius: 50%;
-   box-shadow: inset .1em 0px 0px .08em var(--color-white);
+   box-shadow: inset .1em 0px 0px .08em black;
    animation: circle1 2.7s linear infinite;
    font-size: .75em;
 }
 
 @keyframes circle1 {
-   0%   {border-radius: 50%; box-shadow: inset .1em 0px 0px .08em var(--color-white); width: 100%; }
-   49%  {border-radius: 50%; box-shadow: inset .1em 0px 0px .08em var(--color-white); background: transparent;}
+   0%   {border-radius: 50%; box-shadow: inset .1em 0px 0px .08em black; width: 100%; }
+   49%  {border-radius: 50%; box-shadow: inset .1em 0px 0px .08em black; background: transparent;}
    50%  {border-radius: 0%; width: .175em; background: var(--color-white);}
-   51%  {border-radius: 50%; box-shadow: inset -.1em 0px 0px .08em var(--color-white); background: transparent;}
-   100% {border-radius: 50%; box-shadow: inset -.1em 0px 0px .08em var(--color-white); width: 100%;}
+   51%  {border-radius: 50%; box-shadow: inset -.1em 0px 0px .08em black; background: transparent;}
+   100% {border-radius: 50%; box-shadow: inset -.1em 0px 0px .08em black; width: 100%;}
 }
 
 .globe :nth-child(1) {
@@ -453,7 +453,7 @@
    transform: translate(-50%, -50%);
    border-radius: 50%;
    height: 55%;
-   box-shadow: inset 0px 0px 0px .15em var(--color-white);
+   box-shadow: inset 0px 0px 0px .15em black;
    font-size: .75em;
 }
 
@@ -465,7 +465,7 @@
    transform: translate(-50%, -50%);
    border-radius: 0%;
    height: .15em;
-   background: var(--color-white);
+   background: black;
    font-size: .75em;
 }
 

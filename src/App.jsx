@@ -16,7 +16,7 @@ import AnimatedLine from './Pages/Line.jsx'
 import Contact from './Pages/Contact.jsx'
 import Footer from './Pages/Footer.jsx'
 
-import GalleryPage from './Pages/GalleryPage.jsx'
+import GalleryPage from './components/GalleryPage.jsx'
 
 // Home page component
 import { useLocation } from 'react-router-dom'

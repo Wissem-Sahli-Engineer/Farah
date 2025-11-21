@@ -48,7 +48,7 @@ const translate = {
 const links = [
   { title: "Home", href: "/", src: "./img/Farah1.jpg" },
   { title: "Gallery", href: "/gallery", src: "./img/Farah7.jpg" },
-  { title: "About ME", href: "/about", src: "./img/Farah7.jpg" },
+  { title: "About ME", href: "/about", src: "./img/Farah9.jpg" },
   { title: "Contact", href: "/contact", src: "./img/Farah11.jpg" },
 ];
 

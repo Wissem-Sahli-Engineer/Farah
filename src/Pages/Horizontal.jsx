@@ -206,7 +206,7 @@ const Section3 = () => {
         <a
           className="style_button1__YwofB"
           tabIndex={0}
-          href="/files/farah aridhi portfolio 2.pdf"
+          href="./public/files/farah aridhi portfolio 2.pdf"
           download
           style={{textDecoration :'none'}}
         >

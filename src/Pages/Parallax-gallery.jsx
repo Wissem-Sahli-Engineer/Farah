@@ -33,7 +33,7 @@ export default function Gallery() {
       scale: scale5 
     },
     { 
-      src: "./img/Farah5.jpg", 
+      src: "./img/Farah30.jpg", 
       scale: scale6 
     },
     { 
