@@ -7,7 +7,8 @@ export default function LoadingPage() {
   useEffect(() => {
     // Disable scroll during loading
     document.body.style.overflow = 'hidden';
-    // Hide the hero header while loading (prefer hiding header element rather than changing body background)
+    
+    // Hide the header while loading
     const headerEl = document.querySelector('.home-header') || document.querySelector('header');
     const previousHeaderVisibility = headerEl ? headerEl.style.visibility : null;
     if (headerEl) headerEl.style.visibility = 'hidden';
@@ -17,22 +18,38 @@ export default function LoadingPage() {
       setDotPosition((prev) => (prev + 1) % 4);
     }, 500);
 
-    // Minimum loading time is 1.5 seconds
-    const minLoadTimer = setTimeout(() => {
-      setLoading(false);
-      // Re-enable scroll after loading completes
-      document.body.style.overflow = 'unset';
-      // restore header visibility
-      if (headerEl) headerEl.style.visibility = previousHeaderVisibility || '';
-    }, 2500);
+    // Track if minimum time has passed
+    let minTimeReached = false;
+    let imagesLoaded = false;
 
-    // Listen for all images to load (home page images)
-    const imageLoadListener = () => {
-      // If images load before 1.5s, wait until 1.5s to end loading
-      // The setTimeout above will handle the actual ending
+    const endLoading = () => {
+      if (minTimeReached && imagesLoaded) {
+        setLoading(false);
+        document.body.style.overflow = 'unset';
+        if (headerEl) headerEl.style.visibility = previousHeaderVisibility || '';
+      }
     };
 
+    // Minimum loading time is 2.5 seconds
+    const minLoadTimer = setTimeout(() => {
+      minTimeReached = true;
+      endLoading();
+    }, 2500);
+
+    // Wait for all images to load
+    const imageLoadListener = () => {
+      imagesLoaded = true;
+      endLoading();
+    };
+
+    // Listen for window load event (all resources including images)
     window.addEventListener('load', imageLoadListener);
+
+    // Fallback: If already loaded before listener attached
+    if (document.readyState === 'complete') {
+      imagesLoaded = true;
+      endLoading();
+    }
 
     return () => {
       clearInterval(dotInterval);
@@ -64,7 +81,7 @@ export default function LoadingPage() {
           alignItems: 'center',
           color: '#fff',
           zIndex: 9999,
-           transform: loading ? 'translateY(0)' : 'translateY(-100dvh)',
+          transform: loading ? 'translateY(0)' : 'translateY(-100dvh)',
           transition: 'transform 1.2s cubic-bezier(0.76, 0, 0.24, 1)',
           pointerEvents: loading ? 'auto' : 'none',
         }}
@@ -91,7 +108,6 @@ export default function LoadingPage() {
             }
           }
         `}</style>
-
       </div>
     </>
   );
