@@ -43,7 +43,7 @@ function HomePage() {
   return (
     <>
 
-      <LoadingPage />
+
       <HeroSection />
       <div id="about"><AboutHero /></div>
       <Gallery />
@@ -70,6 +70,7 @@ function App() {
 
   return (
     <Router>
+            <LoadingPage />
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
