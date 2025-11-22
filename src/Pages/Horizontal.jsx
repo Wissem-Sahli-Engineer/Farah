@@ -156,7 +156,7 @@ const Section2 = () => {
       <div className="double">
         <div className="imageContainer">
           <img 
-            src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811414/Farah16_wakngi.webp" 
+            src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811293/Farah61_tlrrtr.webp" 
             alt="Portrait 1"
           />
         </div>
@@ -181,7 +181,7 @@ const Section2 = () => {
         </div>
         <div className="imageContainer">
           <img 
-            src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811420/Farah18_jlzx6u.webp" 
+            src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811086/Farah12_ndwlux.webp" 
             alt="Nature"
           />
         </div>

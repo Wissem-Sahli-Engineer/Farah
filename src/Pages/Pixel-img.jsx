@@ -52,6 +52,8 @@ export default function PixelImage() {
     const [loaded, setLoaded] = useState(false);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
     const highResImageRef = useRef(null);
+    const animationStartedRef = useRef(false);
+
     const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
 
     useEffect(() => {
@@ -66,15 +68,44 @@ export default function PixelImage() {
       };
       img.onerror = () => {
         console.warn(`Failed to load image: ${src}`);
-        setLoaded(true); // Continue even if image fails
+        setLoaded(true);
       };
       img.style.objectFit = 'cover';
       img.src = src;
     }, [src]);
 
+    // Initialize canvas with pixelated effect when loaded
     useEffect(() => {
-      if (inView && loaded) {
-        animate(highResImageRef.current);
+      if (loaded && dimensions.width > 0 && canvasRef.current) {
+        const ctx = canvasRef.current.getContext('2d');
+        const width = dimensions.width;
+        const height = dimensions.height;
+        
+        // Draw initial pixelated version
+        ctx.drawImage(highResImageRef.current, 0, 0, width, height);
+        
+        try {
+          const imageData = ctx.getImageData(0, 0, width, height).data;
+          const pixelSize = 64;
+          
+          for (let y = 0; y < height; y += pixelSize) {
+            for (let x = 0; x < width; x += pixelSize) {
+              const index = (x + y * width) * 4;
+              ctx.fillStyle = `rgba(${imageData[index]},${imageData[index + 1]},${imageData[index + 2]},${imageData[index + 3]})`;
+              ctx.fillRect(x, y, pixelSize, pixelSize);
+            }
+          }
+        } catch (error) {
+          console.warn('Canvas tainted by cross-origin image.', error);
+        }
+      }
+    }, [loaded, dimensions]);
+
+    // Start depixelation animation when in view
+    useEffect(() => {
+      if (inView && loaded && !animationStartedRef.current) {
+        animationStartedRef.current = true;
+        animate(highResImageRef.current, 32); // Start from 32 since we already drew 64
       }
     }, [inView, loaded]);
 
@@ -83,18 +114,18 @@ export default function PixelImage() {
       ctx.drawImage(img, 0, 0, dimensions.width, dimensions.height);
     };
 
-    const animate = (img, pixelSize = 64) => {
+    const animate = (img, pixelSize) => {
       const ctx = canvasRef.current.getContext('2d');
       const width = dimensions.width;
       const height = dimensions.height;
 
-      drawImage(img);
-
-      if (pixelSize < 5) {
+      if (pixelSize < 2) {
+        drawImage(img);
         return;
       }
 
       try {
+        drawImage(img);
         const imageData = ctx.getImageData(0, 0, width, height).data;
 
         for (let y = 0; y < height; y += pixelSize) {
@@ -109,15 +140,14 @@ export default function PixelImage() {
           animate(img, pixelSize / 2);
         }, 150);
       } catch (error) {
-        console.warn('Canvas tainted by cross-origin image. Displaying original image instead.', error);
-        // If canvas is tainted, just display the image without pixelation effect
+        console.warn('Canvas error during animation.', error);
         drawImage(img);
       }
     };
 
     return (
       <div ref={ref} className="picture">
-        <img ref={imgRef} src={src10} alt="Low quality preview" crossOrigin="anonymous" />
+        <img ref={imgRef} src={src10} alt="Low quality preview" crossOrigin="anonymous" style={{ opacity: 0 }} />
         <canvas
           ref={canvasRef}
           width={dimensions.width}

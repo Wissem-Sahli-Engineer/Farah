@@ -323,6 +323,16 @@
       top: calc(var(--vh, 1vh) * -8);
       position: absolute;
    }
+   .home-header .row .flex-col .header-above-h4 #Artboard{
+      stroke: black !important;
+   }
+
+   .home-header .row .flex-col h4 {
+      color : black;
+   }
+   .home-header .big-name h1{
+      color : black;
+   }
 
    .home-header .hanger {
       width: 6em;
