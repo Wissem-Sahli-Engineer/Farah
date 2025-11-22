@@ -18,7 +18,7 @@ export default function LoadingPage() {
       setLoading(false);
       // Re-enable scroll after loading completes
       document.body.style.overflow = 'unset';
-    }, 1500);
+    }, 2500);
 
     // Listen for all images to load (home page images)
     const imageLoadListener = () => {
@@ -63,14 +63,28 @@ export default function LoadingPage() {
         }}
       >
         <div style={{ textAlign: 'center', lineHeight: '1.8' }}>
-          <div style={{ fontSize: '32px', marginBottom: '8px' }}>Farah Laridhi</div>
-          <div style={{ fontSize: '18px', marginBottom: '8px' }}>Fashion Model & Actress</div>
-          <div style={{ fontSize: '14px', marginBottom: '8px' }}>© All right reserved 2026</div>
-          <div style={{ fontSize: '14px', marginBottom: '30px' }}>By wissem sahli</div>
-          <div style={{ fontSize: '16px', minHeight: '24px' }}>
+          <div style={{ fontSize: '32px', marginBottom: '8px', animation: 'fadeIn 0.8s ease-out 0.2s both' }}>Farah Laridhi</div>
+          <div style={{ fontSize: '18px', marginBottom: '8px', animation: 'fadeIn 0.8s ease-out 0.4s both' }}>Fashion Model & Actress</div>
+          <div style={{ fontSize: '14px', marginBottom: '8px', animation: 'fadeIn 0.8s ease-out 0.6s both' }}>© All right reserved 2026</div>
+          <div style={{ fontSize: '14px', marginBottom: '30px', animation: 'fadeIn 0.8s ease-out 0.8s both' }}>By wissem sahli</div>
+          <div style={{ fontSize: '16px', minHeight: '24px', animation: 'fadeIn 0.8s ease-out 1s both' }}>
             loading{getDots()}
           </div>
         </div>
+
+        <style>{`
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+              transform: translateY(10px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}</style>
+
       </div>
     </>
   );
