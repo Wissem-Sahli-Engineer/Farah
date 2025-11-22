@@ -83,7 +83,7 @@ const HeroSection = () => {
   return (
     <header className="section home-header theme-dark" data-scroll-section>
       <div className="overlay personal-image no-select once-in" data-scroll data-scroll-speed="-3" data-scroll-position="top">
-        <img src="./img/Farah5.jpg" alt="" />
+        <img src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811071/Farah5_ycgzqq.webp" alt="" />
       </div>
 
       <div className="overlay get-height once-in once-in-secondary">

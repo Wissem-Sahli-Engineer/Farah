@@ -187,7 +187,7 @@ const AboutImage = () => {
     }
 
     .single-about-image .overlay.overlay-image {
-      background: url("/img/Farah11.jpg") center center no-repeat;
+      background: url("https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811171/Farah11_w6yudf.webp") center center no-repeat;
       background-size: cover;
       height: 105%;
       transform: translate3d(0, 0, 0);
@@ -195,7 +195,7 @@ const AboutImage = () => {
     }
 
     .single-about-image .overlay:nth-child(2) {
-      background: url("/img/Farah11.jpg") center center no-repeat;
+      background: url("https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811171/Farah11_w6yudf.webp") center center no-repeat;
       display: none;
     }
 

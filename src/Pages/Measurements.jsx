@@ -7,7 +7,7 @@ export default function Measurements() {
       {/* LEFT IMAGES */}
       <div style={styles.leftColumn}>
         <img
-          src="./img/FarahM.jpg"
+          src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811325/FarahM_mkat5q.webp"
           alt="model"
           style={styles.fullImg}
         />
@@ -61,7 +61,7 @@ export default function Measurements() {
       {/* RIGHT IMAGES */}
       <div style={styles.rightColumn}>
         <img
-          src="./img/FarahM2.png"
+          src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811328/FarahM2_tuyg2b.webp"
           alt="model"
           style={styles.smallImg}
         />

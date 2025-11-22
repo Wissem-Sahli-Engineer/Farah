@@ -46,10 +46,10 @@ const translate = {
 
 // Navigation links data
 const links = [
-  { title: "Home", href: "/", src: "./img/Farah1.jpg" },
-  { title: "Gallery", href: "/gallery", src: "./img/Farah7.jpg" },
-  { title: "About ME", href: "/about", src: "./img/Farah9.jpg" },
-  { title: "Contact", href: "/contact", src: "./img/Farah11.jpg" },
+  { title: "Home", href: "/", src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811069/Farah1_uqnrdc.webp" },
+  { title: "Gallery", href: "/gallery", src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811076/Farah7_togngm.webp" },
+  { title: "About ME", href: "/about", src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811089/Farah9_g9tdnv.webp" },
+  { title: "Contact", href: "/contact", src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811171/Farah11_w6yudf.webp" },
 ];
 
 // Body Component

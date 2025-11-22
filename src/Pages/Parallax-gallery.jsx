@@ -17,31 +17,31 @@ export default function Gallery() {
   // Using placeholder images from Picsum
   const pictures = [
     { 
-      src: "./img/Farah1.jpg", 
+      src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811069/Farah1_uqnrdc.webp", 
       scale: scale4 
     },
     { 
-      src: "./img/Farah2.jpg", 
+      src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811109/Farah2_m7woxi.webp", 
       scale: scale5 
     },
     { 
-      src: "./img/Farah7.jpg", 
+      src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811515/Farah32_bzc3bc.webp", 
       scale: scale6 
     },
     { 
-      src: "./img/Farah4.jpg", 
+      src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811069/Farah4_ivhaax.webp", 
       scale: scale5 
     },
     { 
-      src: "./img/Farah30.jpg", 
+      src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811420/Farah30_ledkbs.webp", 
       scale: scale6 
     },
     { 
-      src: "./img/Farah6(1).jpg", 
+      src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811075/Farah6_1_qkr1vw.webp", 
       scale: scale8 
     },
     { 
-      src: "./img/Farah8.jpg", 
+      src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811077/Farah8_gdzand.webp", 
       scale: scale9 
     },
   ];

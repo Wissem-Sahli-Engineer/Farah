@@ -73,13 +73,13 @@ const Section1 = () => {
       <div className="images">
         <div className="imageContainer">
           <img 
-            src="./img/Farah14.jpg" 
+            src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811158/Farah14_d4q11i.webp" 
             alt="Farah"
           />
         </div>
         <div className="imageContainer">
           <img 
-            src="./img/Farah15.jpg" 
+            src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811412/Farah15_kj9yng.webp" 
             alt="Farah"
           />
         </div>
@@ -147,7 +147,7 @@ const Section2 = () => {
         </div>
         <div className="imageContainer">
           <img 
-            src="./img/Farah3.png" 
+            src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811083/Farah3_qtazio.webp" 
             alt="Scenic view"
           />
         </div>
@@ -156,13 +156,13 @@ const Section2 = () => {
       <div className="double">
         <div className="imageContainer">
           <img 
-            src="./img/Farah16.jpg" 
+            src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811414/Farah16_wakngi.webp" 
             alt="Portrait 1"
           />
         </div>
         <div className="imageContainer">
           <img 
-            src="./img/Farah17.jpg" 
+            src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811412/Farah17_vkybim.webp" 
             alt="Portrait 2"
           />
         </div>
@@ -175,13 +175,13 @@ const Section2 = () => {
       <div className="end">
         <div className="imageContainer">
           <img 
-            src="./img/Farah20.jpg" 
+            src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811424/Farah20_raizlr.webp" 
             alt="Landscape"
           />
         </div>
         <div className="imageContainer">
           <img 
-            src="./img/Farah18.jpg" 
+            src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811420/Farah18_jlzx6u.webp" 
             alt="Nature"
           />
         </div>
@@ -195,7 +195,7 @@ const Section3 = () => {
     <div className="container3">
       <div className="imageContainer">
         <img 
-          src="./img/Farah21.jpg" 
+          src="https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811414/Farah21_mxpgn7.webp" 
           alt="Final image"
         />
       </div>
@@ -206,7 +206,7 @@ const Section3 = () => {
         <a
           className="style_button1__YwofB"
           tabIndex={0}
-          href="./public/files/farah aridhi portfolio 2.pdf"
+          href="/public/files/farah aridhi portfolio 2.pdf"
           download
           style={{textDecoration :'none'}}
         >

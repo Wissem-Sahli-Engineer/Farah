@@ -269,7 +269,7 @@ const DeviceBlock = () => {
                   <video 
                     ref={videoRef}
                     className="overlay" 
-                    src="./src/assets/FarahWalk.MP4" 
+                    src="/src/assets/FarahWalk.MP4" 
                     loop 
                     muted 
                     playsInline
@@ -281,7 +281,7 @@ const DeviceBlock = () => {
                 <div 
                   className="overlay overlay-device" 
                   style={{
-                    background: "url(./src/assets/device-mbp-16-lower-nonotch.png) center center no-repeat", 
+                    background: "url(https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811938/device-mbp-16-lower-nonotch_byoreh.webp) center center no-repeat", 
                     backgroundSize: "cover"
                   }}
                 ></div>
