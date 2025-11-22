@@ -269,7 +269,7 @@ const DeviceBlock = () => {
                   <video 
                     ref={videoRef}
                     className="overlay" 
-                    src="/assets/FarahWalk.MP4" 
+                    src="https://res.cloudinary.com/dbjwsyyyc/video/upload/v1763825976/FarahWalk_xejpb9.mov" 
                     loop 
                     muted 
                     playsInline

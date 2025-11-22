@@ -37,12 +37,12 @@ const useInView = ({ threshold = 0.5, triggerOnce = false } = {}) => {
 export default function PixelImage() {
   const images = [
     {
-      high: '/img_webp/Farah13.webp',
-      low: '/img_webp/Farah13.webp'
+      high: 'https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811131/Farah13_hk14o0.webp',
+      low: 'https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811131/Farah13_hk14o0.webp'
     },
     {
-      high: '/img_webp/Farah10.webp',
-      low: '/img_webp/Farah10.webp'
+      high: 'https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811101/Farah10_d09nee.webp',
+      low: 'https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811101/Farah10_d09nee.webp'
     }
   ];
 
@@ -59,9 +59,14 @@ export default function PixelImage() {
       setDimensions({ width, height });
 
       const img = new Image();
+      img.crossOrigin = 'anonymous';
       img.onload = () => {
         highResImageRef.current = img;
         setLoaded(true);
+      };
+      img.onerror = () => {
+        console.warn(`Failed to load image: ${src}`);
+        setLoaded(true); // Continue even if image fails
       };
       img.style.objectFit = 'cover';
       img.src = src;
@@ -89,24 +94,30 @@ export default function PixelImage() {
         return;
       }
 
-      const imageData = ctx.getImageData(0, 0, width, height).data;
+      try {
+        const imageData = ctx.getImageData(0, 0, width, height).data;
 
-      for (let y = 0; y < height; y += pixelSize) {
-        for (let x = 0; x < width; x += pixelSize) {
-          const index = (x + y * width) * 4;
-          ctx.fillStyle = `rgba(${imageData[index]},${imageData[index + 1]},${imageData[index + 2]},${imageData[index + 3]})`;
-          ctx.fillRect(x, y, pixelSize, pixelSize);
+        for (let y = 0; y < height; y += pixelSize) {
+          for (let x = 0; x < width; x += pixelSize) {
+            const index = (x + y * width) * 4;
+            ctx.fillStyle = `rgba(${imageData[index]},${imageData[index + 1]},${imageData[index + 2]},${imageData[index + 3]})`;
+            ctx.fillRect(x, y, pixelSize, pixelSize);
+          }
         }
-      }
 
-      setTimeout(() => {
-        animate(img, pixelSize / 2);
-      }, 150);
+        setTimeout(() => {
+          animate(img, pixelSize / 2);
+        }, 150);
+      } catch (error) {
+        console.warn('Canvas tainted by cross-origin image. Displaying original image instead.', error);
+        // If canvas is tainted, just display the image without pixelation effect
+        drawImage(img);
+      }
     };
 
     return (
       <div ref={ref} className="picture">
-        <img ref={imgRef} src={src10} alt="Low quality preview" />
+        <img ref={imgRef} src={src10} alt="Low quality preview" crossOrigin="anonymous" />
         <canvas
           ref={canvasRef}
           width={dimensions.width}
