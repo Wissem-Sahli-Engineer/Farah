@@ -57,7 +57,7 @@ export default function LoadingPage() {
           alignItems: 'center',
           color: '#fff',
           zIndex: 9999,
-          transform: loading ? 'translateY(0)' : 'translateY(-100%)',
+            transform: loading ? 'translateY(0)' : `translateY(-${window.innerHeight}px)`,
           transition: 'transform 1.2s cubic-bezier(0.76, 0, 0.24, 1)',
           pointerEvents: loading ? 'auto' : 'none',
         }}
