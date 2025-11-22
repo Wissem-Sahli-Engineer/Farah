@@ -7,9 +7,10 @@ export default function LoadingPage() {
   useEffect(() => {
     // Disable scroll during loading
     document.body.style.overflow = 'hidden';
-    // Keep a black background for the hero/page during loading
-    const previousBodyBg = document.body.style.backgroundColor;
-    document.body.style.backgroundColor = '#000';
+    // Hide the hero header while loading (prefer hiding header element rather than changing body background)
+    const headerEl = document.querySelector('.home-header') || document.querySelector('header');
+    const previousHeaderVisibility = headerEl ? headerEl.style.visibility : null;
+    if (headerEl) headerEl.style.visibility = 'hidden';
 
     // Animate the dots
     const dotInterval = setInterval(() => {
@@ -21,8 +22,8 @@ export default function LoadingPage() {
       setLoading(false);
       // Re-enable scroll after loading completes
       document.body.style.overflow = 'unset';
-      // restore previous body background
-      document.body.style.backgroundColor = previousBodyBg || '';
+      // restore header visibility
+      if (headerEl) headerEl.style.visibility = previousHeaderVisibility || '';
     }, 2500);
 
     // Listen for all images to load (home page images)
@@ -38,7 +39,7 @@ export default function LoadingPage() {
       clearTimeout(minLoadTimer);
       window.removeEventListener('load', imageLoadListener);
       document.body.style.overflow = 'unset';
-      document.body.style.backgroundColor = previousBodyBg || '';
+      if (headerEl) headerEl.style.visibility = previousHeaderVisibility || '';
     };
   }, []);
 
