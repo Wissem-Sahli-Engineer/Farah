@@ -37,12 +37,12 @@ const useInView = ({ threshold = 0.5, triggerOnce = false } = {}) => {
 export default function PixelImage() {
   const images = [
     {
-      high: '/img/img_webp/Farah13.webp',
-      low: '/img/img_webp/Farah13.webp'
+      high: '/img_webp/Farah13.webp',
+      low: '/img_webp/Farah13.webp'
     },
     {
-      high: '/img/img_webp/Farah10.webp',
-      low: '/img/img_webp/Farah10.webp'
+      high: '/img_webp/Farah10.webp',
+      low: '/img_webp/Farah10.webp'
     }
   ];
 

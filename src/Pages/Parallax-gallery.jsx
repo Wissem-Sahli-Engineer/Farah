@@ -25,7 +25,7 @@ export default function Gallery() {
       scale: scale5 
     },
     { 
-      src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811515/Farah32_bzc3bc.webp", 
+      src: "https://res.cloudinary.com/dbjwsyyyc/image/upload/v1763811467/Farah31_idmtqx.webp", 
       scale: scale6 
     },
     { 

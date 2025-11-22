@@ -269,7 +269,7 @@ const DeviceBlock = () => {
                   <video 
                     ref={videoRef}
                     className="overlay" 
-                    src="/src/assets/FarahWalk.MP4" 
+                    src="/assets/FarahWalk.MP4" 
                     loop 
                     muted 
                     playsInline
