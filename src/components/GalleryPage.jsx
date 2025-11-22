@@ -96,7 +96,7 @@ export default function GalleryPage() {
       <Orb
         images={myImages} // Pass the array!
         totalItems={50} // More for even distribution; repeats images
-        sphereRadius={4}
+        sphereRadius={5}
         backgroundColor="black"
       />
       <footer>
